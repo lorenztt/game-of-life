@@ -31,10 +31,8 @@ pipeline {
         }
 		stage('Promote') {
 			steps {
-				def userInput = false
-				script {
-					def userInput = input(id: 'Proceed', message: 'Promote build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: 'true', description: '', name: 'Please confirm']])
-					echo 'userInput: ' + userInput
+				def userInput = input(
+					id: 'userInput', message: 'Let\'s promote?')
 
 					if(userInput == true) {
 					echo "DEPLOY HORS PROD"
